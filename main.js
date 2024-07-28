@@ -1,88 +1,62 @@
-// task 1 !
+// task 1..
 
-// let createStudentName = {
-//     name:"Bilal",
-//     surname:"Gyazitdiniv",
-//     Age:15,
-//     faculty:"CS",
-//     university:"ALOTOO",
-//     gpa:87,
-// }
-// console.log(createStudentName);
-
-// task 2 !
-
-// let createStudentName = {
-//     name:"Bilal",
-//     surname:"Gyazitdiniv",
-//     Age:15,
-//     faculty:"CS",
-//     university:"ALOTOO",
-//     gpa:87,
-// }
-// console.log(delete createStudentName.faculty);
-// console.log(createStudentName);
-
-// task 3 !
-
-// let peaksoftFullPassword = {
-//     email: "admin123@gmail.com",
-//     password: "admin123",
-//     age: 16,
-//     city:"Moscow",
-// }
-// let getProperty = prompt("Enter your email...!");
-// let getPassword = prompt("Enter your password...!")
-// let GetNumber = prompt("2 + 3..?")
-// if ( getProperty in peaksoftFullPassword) {
-//     console.log(getProperty);
-// }
-//     else {
-//         alert("Извините, такого email не существует");
-//     }
-
-//      if(getPassword in peaksoftFullPassword.password) {
-//         console.log(peaksoftFullPassword.password);
-//     }
-//     else {
-//         console.log("Неверный пароль... ");
-//     }
-
-//     if (GetNumber === ) {
-        
-//     }
+const student1 = {
+    name:"John",
+    lang:"KG",
+    age:24
+}
+delete student1.age;
+ const student2 = student1
+console.log(student1);
 
 
+// task 2..
+// Примитивный даныйлар memory сохраняется в стеке;
+// object Heap, Stack сохраняется в куче;
+
+// task 3..
+
+const array = [1,
+     true, 
+     3, 
+     {Name:"ZH", hobbies: ["swimming", "reading"]},
+     5,
+     "Hello",
+     "Hi"
+     ]
+console.log(array);
+console.log(array[1]);
+ console.log(array[4]);
+ console.log(array[3]);
+array.unshift("Google");
+console.log(array);
+array.shift("Google")
+console.log(array);
+array.push("Bilal")
+console.log(array);
+ array.pop("Bilal")
+console.log(array);
+
+let array1 = array.slice(2,3)
+console.log(array1);
 
 
+delete array[5]
+console.log(array);
 
- let peaksoftFullPassword = {
-     email: "admin123@gmail.com",
-     password: "admin123",
-     age: 16,
-     city:"Moscow",
-     sum:5,
- }
-let point = 0;
-let answer = "";
-answer = prompt("Enter your email...!");
-if (answer == "admin123@gmail.com"){
-    console.log();
-    point = point + 1; 
-}else{
-    alert("Неверно ввели почту!");
+console.log(array.length);
+
+
+// task 4...
+
+const arr = [1,2,3,"sdf",4,"sdf",{},3, true, 2, [1,6,3],1];
+
+let sum = 0;
+
+for (const value of arr) {
+  if (typeof value === 'number') {
+    sum += value;
+  }
 }
 
-answer = prompt("Enter your password...!");
-if (answer == "admin123"){
-    console.log(answer);
-    point = point + 1;  point++ }else{
-    alert("Неверно  ввели пароль!");
-}
-answer = prompt("2+3=?")
-if (answer == "5") {
-    alert("Верно!ваша премия-" + peaksoftFullPassword.sum);
-}
-else{
-    alert("Поздравлю вы самый умный человек")
-}
+console.log(sum);
