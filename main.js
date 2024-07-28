@@ -1,64 +1,62 @@
-//! task 1
+// task 1..
 
- let index = 0;
-
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
-
-//   ! task 2
-
- let counter = 2;
-
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
-
-//    ! task 3
-
-let count = 10;
-let sum = 1;
-
-while (count <= 0) {
-  sum = sum + count
-  count++
+const student1 = {
+    name:"John",
+    lang:"KG",
+    age:24
 }
-console.log(sum +count);
+delete student1.age;
+ const student2 = student1
+console.log(student1);
 
-// task 4
 
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
+// task 2..
+// Примитивный даныйлар memory сохраняется в стеке;
+// object Heap, Stack сохраняется в куче;
 
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+// task 3..
+
+const array = [1,
+     true, 
+     3, 
+     {Name:"ZH", hobbies: ["swimming", "reading"]},
+     5,
+     "Hello",
+     "Hi"
+     ]
+console.log(array);
+console.log(array[1]);
+ console.log(array[4]);
+ console.log(array[3]);
+array.unshift("Google");
+console.log(array);
+array.shift("Google")
+console.log(array);
+array.push("Bilal")
+console.log(array);
+ array.pop("Bilal")
+console.log(array);
+
+let array1 = array.slice(2,3)
+console.log(array1);
+
+
+delete array[5]
+console.log(array);
+
+console.log(array.length);
+
+
+// task 4...
+
+const arr = [1,2,3,"sdf",4,"sdf",{},3, true, 2, [1,6,3],1];
+
+let sum = 0;
+
+for (const value of arr) {
+  if (typeof value === 'number') {
+    sum += value;
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+}
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+console.log(sum);
