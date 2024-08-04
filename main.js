@@ -1,64 +1,76 @@
-//! task 1
+//  task 1...
 
- let index = 0;
+ const array1 = [1,2,3,4,5];
+ const map1 = array1.map((x) => x ** 2);
+ console.log(map1);
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+// // task 2...
 
-//   ! task 2
+const usersName = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Cristiano",lastName: "Ronaldo", age:38, gender: "male"},
+];
 
- let counter = 2;
-
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
-
-//    ! task 3
-
-let count = 10;
-let sum = 1;
-
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
-
-// task 4
-
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
-
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+const resultMap = usersName.map((element) =>{
+  return {
+    fullName: element.firstName + ' '   + element.lastName +' ' + element.age + ' '  + element.gender
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+});
+console.log(resultMap);
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+// task3...
+   let Numbers = [1,2,3,4,5,4, 8,34,3,6];
+   let ChetNumbers = Numbers
+   .filter((element) => element % 2 === 0)
+  console.log(ChetNumbers);
+
+// task 4...
+
+const users = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Cristiano",lastName: "Ronaldo", age:38, gender: "male"},
+]
+ 
+//  // task5...
+  const reduceNumb = [1, 2, 3, 4 ,5,4, 8,34,3,6];
+
+
+ 
+  const initialValue = 0;
+  const sumWithInitial = reduceNumb.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValue,
+  );
+ 
+  console.log(sumWithInitial);
+
+// //  task6...
+ const foreNumbers = [1,2,3,4,5,4,8,34,3,6];
+ var sum = 0;
+ let noChetNumbers = foreNumbers
+   .filter((element) => element % 2 !== 0)
+ noChetNumbers.forEach(function(num) {
+     sum += num;
+ });
+ console.log(sum);
+// task 7...
+
+const findUsers = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Kakashi",lastName: "Hatake", age:28, gender: "male"},
+  {firstName: "Sakura", lastName: "Chan", age: 18, gender: "female" },
+]
+console.log(findUsers.findIndex(user => user.firstName == 'Naruto'))
+ 
+// task 8...
+
+const numbers = [ 1,2,3,4,5,4,8,34,3,6,];
+const largeNumber = (element) => element > 34;
+
+console.log(numbers.findIndex(largeNumber));
