@@ -1,62 +1,76 @@
-// task 1..
+//  task 1...
 
-const student1 = {
-    name:"John",
-    lang:"KG",
-    age:24
-}
-delete student1.age;
- const student2 = student1
-console.log(student1);
+ const array1 = [1,2,3,4,5];
+ const map1 = array1.map((x) => x ** 2);
+ console.log(map1);
 
+// // task 2...
 
-// task 2..
-// Примитивный даныйлар memory сохраняется в стеке;
-// object Heap, Stack сохраняется в куче;
+const usersName = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Cristiano",lastName: "Ronaldo", age:38, gender: "male"},
+];
 
-// task 3..
+const resultMap = usersName.map((element) =>{
+  return {
+    fullName: element.firstName + ' '   + element.lastName +' ' + element.age + ' '  + element.gender
+  }
+});
+console.log(resultMap);
 
-const array = [1,
-     true, 
-     3, 
-     {Name:"ZH", hobbies: ["swimming", "reading"]},
-     5,
-     "Hello",
-     "Hi"
-     ]
-console.log(array);
-console.log(array[1]);
- console.log(array[4]);
- console.log(array[3]);
-array.unshift("Google");
-console.log(array);
-array.shift("Google")
-console.log(array);
-array.push("Bilal")
-console.log(array);
- array.pop("Bilal")
-console.log(array);
-
-let array1 = array.slice(2,3)
-console.log(array1);
-
-
-delete array[5]
-console.log(array);
-
-console.log(array.length);
-
+// task3...
+   let Numbers = [1,2,3,4,5,4, 8,34,3,6];
+   let ChetNumbers = Numbers
+   .filter((element) => element % 2 === 0)
+  console.log(ChetNumbers);
 
 // task 4...
 
-const arr = [1,2,3,"sdf",4,"sdf",{},3, true, 2, [1,6,3],1];
+const users = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Cristiano",lastName: "Ronaldo", age:38, gender: "male"},
+]
+ 
+//  // task5...
+  const reduceNumb = [1, 2, 3, 4 ,5,4, 8,34,3,6];
 
-let sum = 0;
 
-for (const value of arr) {
-  if (typeof value === 'number') {
-    sum += value;
-  }
-}
+ 
+  const initialValue = 0;
+  const sumWithInitial = reduceNumb.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValue,
+  );
+ 
+  console.log(sumWithInitial);
 
-console.log(sum);
+// //  task6...
+ const foreNumbers = [1,2,3,4,5,4,8,34,3,6];
+ var sum = 0;
+ let noChetNumbers = foreNumbers
+   .filter((element) => element % 2 !== 0)
+ noChetNumbers.forEach(function(num) {
+     sum += num;
+ });
+ console.log(sum);
+// task 7...
+
+const findUsers = [ 
+  { firstName: "John", lastName: "Obama", age: 34, gender:"Male"},
+  {firstName: "Ariana", lastName: "Grande", age: 22, gender: "female"},
+  {firstName: "Naruto", lastName: "Uzumaki", age:19, gender: "male"},
+  {firstName: "Kakashi",lastName: "Hatake", age:28, gender: "male"},
+  {firstName: "Sakura", lastName: "Chan", age: 18, gender: "female" },
+]
+console.log(findUsers.findIndex(user => user.firstName == 'Naruto'))
+ 
+// task 8...
+
+const numbers = [ 1,2,3,4,5,4,8,34,3,6,];
+const largeNumber = (element) => element > 34;
+
+console.log(numbers.findIndex(largeNumber));
