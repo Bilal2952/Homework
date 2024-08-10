@@ -1,62 +1,177 @@
-// task 1..
+// // task 1...
 
-const student1 = {
-    name:"John",
-    lang:"KG",
-    age:24
-}
-delete student1.age;
- const student2 = student1
-console.log(student1);
+// const computers = [  
+//   {
+//     title: "Macbook Air M1",
+//     price: 85000,
+//   },
+//   {
+//     title:"Dell",
+//     price: 65000,
+//   },
+//   {
+//     title: "Asus Zenbook",
+//     price: 40000,
+//   },
+//   {
+//     title: "Acer Aspire",
+//     price: 45000,
+//   },
+//   {
+//     title: 'Mackbook Pro',
+//     price: 100000,
+//   },
+// ];
+// let ascending = [...computers].sort((a,b) => a.price - b.price);
+// let descendiing = [...computers].sort((a,b) => b.price - a.price); 
+// console.log(descendiing);
+// console.log(ascending);
 
+// //! task 2...
 
-// task 2..
-// Примитивный даныйлар memory сохраняется в стеке;
-// object Heap, Stack сохраняется в куче;
+// const grades = [4,4,4,5,3,5,3,5,3,3,2,5,1];
+// let results = grades.sort((a,b) => a - b);
+// let res = grades.sort((a,b) => b - a);
+// console.log(results);
+// console.log(res);
 
-// task 3..
+// // task 3...
 
-const array = [1,
-     true, 
-     3, 
-     {Name:"ZH", hobbies: ["swimming", "reading"]},
-     5,
-     "Hello",
-     "Hi"
-     ]
-console.log(array);
-console.log(array[1]);
- console.log(array[4]);
- console.log(array[3]);
-array.unshift("Google");
-console.log(array);
-array.shift("Google")
-console.log(array);
-array.push("Bilal")
-console.log(array);
- array.pop("Bilal")
-console.log(array);
+// const fruits = ["strawbery", "mango", "watermelon", "ggrapes", "lemon", "kiwi"];
+// let ASCending = fruits.sort(function(a, b) {
+//   if (a < b) {
+//     return 1;
+//   }
+//   if(b > a){
+//     return -1;
+//   }
+//   return 0;
+// });
+// console.log(ASCending);
+//  let Descendiing = fruits.sort(function(a, b) {
+//   if (a > b) {
+//     return -1;
+//   }
+//   if(b < a){
+//     return 1;
+//   }
+//   return 0;
+// });
+// console.log(Descendiing);
 
-let array1 = array.slice(2,3)
-console.log(array1);
+// // task 4...
 
+// const numbers = [4, 123, -5, 6,100];
+// console.log(Math.min(...numbers));
+// console.log(Math.max(...numbers));
 
-delete array[5]
-console.log(array);
+// // task 5...
+// //  1
+// const fullDate = (Date) => {
+//   const day = Date.getDay();
+//   const month = `${Date.getMonth() + 1}`.padStart(2, "0");
+//   const year = Date.getFullYear();
+//   return `0${day}:${month}:${year} `
+// }
+// const result = fullDate(new Date());
+// console.log(result);
+//  2
+// const date = new Date();
+// const hours = date.getHours();
+// const minutes = date.getMinutes();
+// const seconds = date.getSeconds();
+// if (hours > 10){
+//   const time = "0" + ":" + minutes + ":" + seconds;
+//   console.log(time);
+// }  else if (minutes < 10) {
+//   const time1 = hours + ":" + "0" + minutes + ":" + seconds;
+//   console.log(time1);
+// }else if (seconds < 10) {
+//   const time2 = hours + ":"  + minutes + ":" +  ":" + seconds;
+//   console.log(time2);
+// }else if (hours < 10  && minutes < 0) {
+//   const time3 = "0" + hours + ":" + "0" + minutes + ":" + seconds;
+//   console.log(time3);
+// }else if (hours < 10 && minutes < 10 && seconds < 10) {
+//   const time4 = "0" +  hours + ":" + "0" + minutes + ":" + "0" + seconds;
+//   console.log(time4);
+// }else {
+//   const time5 = hours + ":" + minutes + ":" + seconds;
+//   console.log(time5);
+// }
 
-console.log(array.length);
+// task 6
 
+// const instagramUser = {
+//   userName: "Uzumaki123",
+//   email: " user@gmail.com",
+//   password: "123123",
+//   avatarUrl: "https://wallpapercrafter.com/desktop1/631973-Movies-Avatar-avatar-movie-jake-sully-headshot.jpg",
+//   followers: '1m',
+//   follwing: 512,
+//   title: 'Never Give up',
+// };
+// for (const kye in instagramUser){
+//   console.log(kye)
+// }
+// for (const value in instagramUser){
+//   console.log(instagramUser[value]);
+// }
 
-// task 4...
+// task 7
 
-const arr = [1,2,3,"sdf",4,"sdf",{},3, true, 2, [1,6,3],1];
+//  const computers = [  
+//    {
+//      title: "Macbook Air M1",
+//      price: 85000,
+//    },
+//    {
+//      title:"Dell",
+//      price: 65000,
+//    },
+//    {
+//      title: "Asus Zenbook",
+//      price: 40000,
+//    },
+//    {
+//      title: "Acer Aspire",
+//      price: 45000,
+//    },
+//    {
+//      title: 'Mackbook Pro',
+//      price: 100000,
+//    },
+//  ];
+//  let sum = 0;
+//  for(const object of computers){
+//   sum += object.price;
+//  }
+//  console.log(sum);
+ 
+// task 8
 
-let sum = 0;
+//   const instagramUser = {
+//    userName: "Uzumaki123",
+//    email: " user@gmail.com",  
+//     password: "123123",
+//    avatarUrl: "https://wallpapercrafter.com/desktop1/631973-Movies-Avatar-avatar-movie-jake-sully-headshot.jpg",
+//    followers: '1m',
+//    follwing: 512,
+//    title: 'Never Give up',
+//  };
+//  const objectLength = Object.keys(instagramUser);
+//  for (let i = 0; i < objectLength.length; i++) {
+//   console.log(objectLength[i]); 
+//  }
+//   const values =  Object.keys(instagramUser);
+//   let index = 0;
+//   while (index < values.length) {
+//     const element = instagramUser[values[index]];
+//     console.log(element);
+//     index++;
+//   }
 
-for (const value of arr) {
-  if (typeof value === 'number') {
-    sum += value;
-  }
-}
-
-console.log(sum);
+//   for(const [key, values] of Object.entries(instagramUser)) {
+//     const item = key + ":" + values;
+//     console.log(item);
+//   }
