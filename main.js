@@ -1,64 +1,67 @@
-//! task 1
+// task 1
 
- let index = 0;
+// const posts = {
+//     name: "posts",
+//     isLoading: true,
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+//     byId: {
+//         post1: {
+//             id:"post1",
+//             author: "user1",
+//             body: "......",
+//             comments: ["comment1", "comment2"],
+//         },
+//         post2: {
+//             id: "post2",
+//             author: "user2",
+//             body: "......",
+//             comments: ["comment3", "comment4","comment5"],
+//         },
+//     },
+//     allIds: ["post1", "post2"],
+// };
+//  spread copy
 
-//   ! task 2
 
- let counter = 2;
+// console.log(posts);
+// const { name, isLoading, ...posts2} = posts
+// console.log(posts);
 
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
+// shallow copy
 
-//    ! task 3
 
-let count = 10;
-let sum = 1;
+// console.log(posts);
+// const newCopy = Object.assign({},posts);
+// console.log(newCopy);
 
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
+// task 2
+// deep copy
+
+// const copyDeep = JSON.parse(JSON.stringify(posts));
+// console.log(posts);
+
+// console.log(copyDeep);
+
+// task 3
+
+// const post = {
+
+//     name: "posts",
+//     id: "post1",
+//     author:"user1",
+//     body: "......",
+//     comments: ["comment1", "comment2"],
+// };
+
+// const {comments:color,hello, ...rest} = post;
+// console.log(post);
+// color барабар = author;
+// hello барабар = body;
+// rest барабар =  все остальные 
 
 // task 4
 
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
+const comments = ["comment3", "comment4", "comment5", "comment1"]
 
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
-  }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
-
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+// const [undefined, comment1, ...rest] = comments
+// console.log(undefined);
