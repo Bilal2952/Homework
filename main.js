@@ -1,67 +1,47 @@
-// task 1
+window.addEventListener('load', () => {
+	const form = document.querySelector("#new-task-form");
+	const input = document.querySelector("#new-task-input");
+	const list_el = document.querySelector("#tasks");
 
-// const posts = {
-//     name: "posts",
-//     isLoading: true,
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
 
-//     byId: {
-//         post1: {
-//             id:"post1",
-//             author: "user1",
-//             body: "......",
-//             comments: ["comment1", "comment2"],
-//         },
-//         post2: {
-//             id: "post2",
-//             author: "user2",
-//             body: "......",
-//             comments: ["comment3", "comment4","comment5"],
-//         },
-//     },
-//     allIds: ["post1", "post2"],
-// };
-//  spread copy
+		const task = input.value;
 
+		const task_el = document.createElement('div');
+		task_el.classList.add('task');
 
-// console.log(posts);
-// const { name, isLoading, ...posts2} = posts
-// console.log(posts);
+		const task_content_el = document.createElement('div');
+		task_content_el.classList.add('content');
 
-// shallow copy
+		task_el.appendChild(task_content_el);
+
+		const task_input_el = document.createElement('input');
+		task_input_el.classList.add('text');
+		task_input_el.type = 'text';
+		task_input_el.value = task;
+		task_input_el.setAttribute('readonly', 'readonly');
+
+		task_content_el.appendChild(task_input_el);
+
+		const task_actions_el = document.createElement('div');
+		task_actions_el.classList.add('actions');
 
 
-// console.log(posts);
-// const newCopy = Object.assign({},posts);
-// console.log(newCopy);
+		const task_delete_el = document.createElement('button');
+		task_delete_el.classList.add('delete');
+		task_delete_el.innerText = 'Delete';
 
-// task 2
-// deep copy
+		task_actions_el.appendChild(task_delete_el);
 
-// const copyDeep = JSON.parse(JSON.stringify(posts));
-// console.log(posts);
+		task_el.appendChild(task_actions_el);
 
-// console.log(copyDeep);
+		list_el.appendChild(task_el);
 
-// task 3
+		input.value = '';
 
-// const post = {
-
-//     name: "posts",
-//     id: "post1",
-//     author:"user1",
-//     body: "......",
-//     comments: ["comment1", "comment2"],
-// };
-
-// const {comments:color,hello, ...rest} = post;
-// console.log(post);
-// color барабар = author;
-// hello барабар = body;
-// rest барабар =  все остальные 
-
-// task 4
-
-const comments = ["comment3", "comment4", "comment5", "comment1"]
-
-// const [undefined, comment1, ...rest] = comments
-// console.log(undefined);
+		task_delete_el.addEventListener('click', (e) => {
+			list_el.removeChild(task_el);
+		});
+	});
+});
