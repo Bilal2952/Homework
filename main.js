@@ -1,64 +1,47 @@
-//! task 1
+window.addEventListener('load', () => {
+	const form = document.querySelector("#new-task-form");
+	const input = document.querySelector("#new-task-input");
+	const list_el = document.querySelector("#tasks");
 
- let index = 0;
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+		const task = input.value;
 
-//   ! task 2
+		const task_el = document.createElement('div');
+		task_el.classList.add('task');
 
- let counter = 2;
+		const task_content_el = document.createElement('div');
+		task_content_el.classList.add('content');
 
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
+		task_el.appendChild(task_content_el);
 
-//    ! task 3
+		const task_input_el = document.createElement('input');
+		task_input_el.classList.add('text');
+		task_input_el.type = 'text';
+		task_input_el.value = task;
+		task_input_el.setAttribute('readonly', 'readonly');
 
-let count = 10;
-let sum = 1;
+		task_content_el.appendChild(task_input_el);
 
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
+		const task_actions_el = document.createElement('div');
+		task_actions_el.classList.add('actions');
 
-// task 4
 
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
+		const task_delete_el = document.createElement('button');
+		task_delete_el.classList.add('delete');
+		task_delete_el.innerText = 'Delete';
 
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
-  }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+		task_actions_el.appendChild(task_delete_el);
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+		task_el.appendChild(task_actions_el);
+
+		list_el.appendChild(task_el);
+
+		input.value = '';
+
+		task_delete_el.addEventListener('click', (e) => {
+			list_el.removeChild(task_el);
+		});
+	});
+});
