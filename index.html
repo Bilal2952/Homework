@@ -2,82 +2,32 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TODO LIST</title>
-
-	<link rel="stylesheet" href="main.css" />
+	<title>Document</title>
+	<link rel="stylesheet" href="./main.css">
 </head>
 <body>
+	<!-- <button id="paragraf">	Hello world</button>
+	<br>
+	<br>
+	<div id="flowers" style="width: 300px; height: 300px;"></div> -->
 
-	<header>
-		<h1>TODO LIST</h1>
-		<form id="new-task-form">
-			<input 
-				type="text" 
-				name="new-task-input" 
-				id="new-task-input" 
-				placeholder="Enter new todo..." />
-			<input 
-				type="submit"
-				id="new-task-submit" 
-				value="Add" />
-		</form>
-	</header>
-	<main>
-		<section class="task-list">
+	<div class="firstBlock">
+		<!-- <div id="timer">00:00</div> -->
+		<div class="rightBlock">
+			<label for="minutes">Minutes</label>
+			<input type="number" id="minutes" placeholder="0">
+			<label for="seconds" style="margin-left: 35px;">Seconds</label>
+			<input type="number" id="seconds" placeholder="0">
+		</div>
+		<div class="buttons">
+			<button id="start">Start</button>
+			<div id="timer">00:00</div>
+			<button id="pause">Pause</button>
+			<button id="reset">Restart</button>
+		</div>
+	</div>
 
-			<div id="tasks">
-
-				 <div class="task">
-					<div class="content">
-						<input 
-							type="text" 
-							class="text" 
-							value="Learn JavaScript"
-							readonly>
-					</div>
-					<div class="actions">
-						<button class="delete">Delete</button>
-					</div>
-				</div> 
-
-			</div>
-            <div id="tasks">
-
-                <div class="task">
-                   <div class="content">
-                       <input 
-                           type="text" 
-                           class="text" 
-                           value="Learnt React"
-                           readonly>
-                   </div>
-                   <div class="actions">
-                       <button class="delete">Delete</button>
-                   </div>
-               </div> 
-
-           </div>
-           <div id="tasks">
-
-            <div class="task">
-               <div class="content">
-                   <input 
-                       type="text" 
-                       class="text" 
-                       value="Learn TypeScript"
-                       readonly>
-               </div>
-               <div class="actions">
-                   <button class="delete">Delete</button>
-               </div>
-           </div> 
-
-       </div>
-		</section>
-	</main>
-
-	<script src="main.js"></script>
+	<script src="./main.js"></script>
 </body>
 </html>

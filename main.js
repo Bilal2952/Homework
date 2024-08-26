@@ -1,47 +1,57 @@
-window.addEventListener('load', () => {
-	const form = document.querySelector("#new-task-form");
-	const input = document.querySelector("#new-task-input");
-	const list_el = document.querySelector("#tasks");
+// * task 1
+setTimeout(function () {
+  const hello = document.getElementById("paragraf");
+  hello.innerHTML = "Ураа!";
+},10000);
 
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
+// task 2
+let i = 0;
+ function chage() {
+  const doc = document.getElementById("flowers");
+  const color = ["black", "blue", "brown", "green"];
+  doc.style.background = color[i];
+  i = (i +1) % color.length
+}
+setInterval(chage,1000)
 
-		const task = input.value;
+// task 3
 
-		const task_el = document.createElement('div');
-		task_el.classList.add('task');
+let timer;
+let minutesInput = document.getElementById("minutes")
+let secondsInput = document.getElementById("seconds")
+let startButton = document.getElementById("start")
+let pauseButton = document.getElementById("pause")
+let resetButton = document.getElementById("reset")
+let timerDisplay= document.getElementById("timer")
 
-		const task_content_el = document.createElement('div');
-		task_content_el.classList.add('content');
+function startTimer() {
+  let minutes = parseInt(minutesInput.value) || 0;
+  let seconds = parseInt(secondsInput.value) || 0;
+  let totalTime = minutes * 60 + seconds;
+}
 
-		task_el.appendChild(task_content_el);
+timer = setInterval(() => {
+  if(totalTime > 0) {
+    minutes = Math.floor(totalTime / 60)
+    seconds = totalTime % 60;
+    timerDisplay.innerHTML = `${minutes}:${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+    totalTime--
+  }else {
+    clearInterval(timer);
+    timerDisplay.innerHTML = "Tome out!";
+  }
+}, 1000 );
 
-		const task_input_el = document.createElement('input');
-		task_input_el.classList.add('text');
-		task_input_el.type = 'text';
-		task_input_el.value = task;
-		task_input_el.setAttribute('readonly', 'readonly');
+startButton.addEventListener("click", startTimer);
+ pauseButton.addEventListener("click", () => {
+  clearInterval(timer)
+ });
 
-		task_content_el.appendChild(task_input_el);
-
-		const task_actions_el = document.createElement('div');
-		task_actions_el.classList.add('actions');
-
-
-		const task_delete_el = document.createElement('button');
-		task_delete_el.classList.add('delete');
-		task_delete_el.innerText = 'Delete';
-
-		task_actions_el.appendChild(task_delete_el);
-
-		task_el.appendChild(task_actions_el);
-
-		list_el.appendChild(task_el);
-
-		input.value = '';
-
-		task_delete_el.addEventListener('click', (e) => {
-			list_el.removeChild(task_el);
-		});
-	});
-});
+ resetButton.addEventListener("click", () => {
+  clearInterval(timer)
+  timerDisplay.innerHTML = "00:00";
+  minutesInput.value = "";
+  secondsInput.value = "";
+ });
