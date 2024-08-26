@@ -1,64 +1,57 @@
-//! task 1
+// * task 1
+setTimeout(function () {
+  const hello = document.getElementById("paragraf");
+  hello.innerHTML = "Ураа!";
+},10000);
 
- let index = 0;
-
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
-
-//   ! task 2
-
- let counter = 2;
-
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
-
-//    ! task 3
-
-let count = 10;
-let sum = 1;
-
-while (count <= 0) {
-  sum = sum + count
-  count++
+// task 2
+let i = 0;
+ function chage() {
+  const doc = document.getElementById("flowers");
+  const color = ["black", "blue", "brown", "green"];
+  doc.style.background = color[i];
+  i = (i +1) % color.length
 }
-console.log(sum +count);
+setInterval(chage,1000)
 
-// task 4
+// task 3
 
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
+let timer;
+let minutesInput = document.getElementById("minutes")
+let secondsInput = document.getElementById("seconds")
+let startButton = document.getElementById("start")
+let pauseButton = document.getElementById("pause")
+let resetButton = document.getElementById("reset")
+let timerDisplay= document.getElementById("timer")
+
+function startTimer() {
+  let minutes = parseInt(minutesInput.value) || 0;
+  let seconds = parseInt(secondsInput.value) || 0;
+  let totalTime = minutes * 60 + seconds;
 }
 
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+timer = setInterval(() => {
+  if(totalTime > 0) {
+    minutes = Math.floor(totalTime / 60)
+    seconds = totalTime % 60;
+    timerDisplay.innerHTML = `${minutes}:${
+      seconds < 10 ? "0" : ""
+    }${seconds}`;
+    totalTime--
+  }else {
+    clearInterval(timer);
+    timerDisplay.innerHTML = "Tome out!";
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+}, 1000 );
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+startButton.addEventListener("click", startTimer);
+ pauseButton.addEventListener("click", () => {
+  clearInterval(timer)
+ });
+
+ resetButton.addEventListener("click", () => {
+  clearInterval(timer)
+  timerDisplay.innerHTML = "00:00";
+  minutesInput.value = "";
+  secondsInput.value = "";
+ });

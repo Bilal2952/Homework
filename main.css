@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color:#2e9de1e8 ;
+    margin-top: 320px;
+    margin-left: 200px;
+}
+.firstBlock{
+    color: #fff;
+    font-size: 20px;
+}
+input{
+    width: 60px;
+    height: 30px;
+}
+label{
+    font-size: 30px;
+}
+.buttons{
+    margin-top: 50px;
+}
+#start{
+    background-color: rgb(6, 162, 6);
+    border-radius: 50px;
+    width: 80px;
+}
+#pause{  
+    background-color: rgb(6, 162, 6);
+    border-radius: 50px;
+    width: 80px;
+    margin-left: 50px;
+}
+#reset{
+    background-color: rgb(6, 162, 6);
+    border-radius: 50px;
+    width: 80px;
+    margin-left: 50px;
+}
+#timer{
+    margin-left: 25px;
+}
+.buttons{
+    display: flex;
+}
+
