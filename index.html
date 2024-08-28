@@ -9,73 +9,29 @@
 	<link rel="stylesheet" href="main.css" />
 </head>
 <body>
-
-	<header>
-		<h1>TODO LIST</h1>
-		<form id="new-task-form">
-			<input 
-				type="text" 
-				name="new-task-input" 
-				id="new-task-input" 
-				placeholder="Enter new todo..." />
-			<input 
-				type="submit"
-				id="new-task-submit" 
-				value="Add" />
-		</form>
-	</header>
-	<main>
-		<section class="task-list">
-
-			<div id="tasks">
-
-				 <div class="task">
-					<div class="content">
-						<input 
-							type="text" 
-							class="text" 
-							value="Learn JavaScript"
-							readonly>
-					</div>
-					<div class="actions">
-						<button class="delete">Delete</button>
-					</div>
-				</div> 
-
+		<div id="divclass">
+			<h1>😊напиши что-нибудь!!!</h1>
+			<button id="button5">Okey</button>
+		  </div>
+		  <div id="main">
+			<h1>TODO - LIST</h1>
+			<form id="form">
+			  <input id="input" type="text" placeholder="Enter new todo..." />
+	  
+			  <button type="submit" id="button">ADD</button>
+			</form>
+	  
+			<section id="section">
+			  <div id="div">
+				<ul id="ulid"></ul>
+			  </div>
+			</section>
+			<div id="divname">
+			  <h2 id="h2class">Вы уверены, что хотите удалить эту задачу?</h2>
+			  <button id="buttonda">Да</button>
+			  <button id="buttonotmen">Нет</button>
 			</div>
-            <div id="tasks">
-
-                <div class="task">
-                   <div class="content">
-                       <input 
-                           type="text" 
-                           class="text" 
-                           value="Learnt React"
-                           readonly>
-                   </div>
-                   <div class="actions">
-                       <button class="delete">Delete</button>
-                   </div>
-               </div> 
-
-           </div>
-           <div id="tasks">
-
-            <div class="task">
-               <div class="content">
-                   <input 
-                       type="text" 
-                       class="text" 
-                       value="Learn TypeScript"
-                       readonly>
-               </div>
-               <div class="actions">
-                   <button class="delete">Delete</button>
-               </div>
-           </div> 
-
-       </div>
-		</section>
+		</div>
 	</main>
 
 	<script src="main.js"></script>

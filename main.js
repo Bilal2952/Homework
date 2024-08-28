@@ -1,47 +1,75 @@
-window.addEventListener('load', () => {
-	const form = document.querySelector("#new-task-form");
-	const input = document.querySelector("#new-task-input");
-	const list_el = document.querySelector("#tasks");
+const form = document.getElementById("form");
+const todoinput = document.getElementById("input");
+const buttonda = document.getElementById("buttonda");
+const ul = document.getElementById("ulid");
 
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
+let todos = [];
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-		const task = input.value;
+  const inputValue = todoinput.value.trim();
 
-		const task_el = document.createElement('div');
-		task_el.classList.add('task');
-
-		const task_content_el = document.createElement('div');
-		task_content_el.classList.add('content');
-
-		task_el.appendChild(task_content_el);
-
-		const task_input_el = document.createElement('input');
-		task_input_el.classList.add('text');
-		task_input_el.type = 'text';
-		task_input_el.value = task;
-		task_input_el.setAttribute('readonly', 'readonly');
-
-		task_content_el.appendChild(task_input_el);
-
-		const task_actions_el = document.createElement('div');
-		task_actions_el.classList.add('actions');
-
-
-		const task_delete_el = document.createElement('button');
-		task_delete_el.classList.add('delete');
-		task_delete_el.innerText = 'Delete';
-
-		task_actions_el.appendChild(task_delete_el);
-
-		task_el.appendChild(task_actions_el);
-
-		list_el.appendChild(task_el);
-
-		input.value = '';
-
-		task_delete_el.addEventListener('click', (e) => {
-			list_el.removeChild(task_el);
-		});
-	});
+  if (todoinput.value.trim() === "") {
+    const divclass = document.getElementById("divclass");
+    divclass.style.display = "block";
+    const button2 = document.getElementById("button5");
+    button2.addEventListener("click", () => {
+      divclass.style.display = "none";
+    });
+  } else {
+    const newTodo = {
+      id: Date.now().toString(),
+      title: inputValue,
+      completed: false,
+    };
+    todos.push(newTodo);
+    renderTodos(todos);
+  }
+  todoinput.value = "";
 });
+const renderTodos = (todosArray = []) => {
+  ul.innerHTML = "";
+  todosArray.forEach((item) => {
+    const list = document.createElement("li");
+    const inputcheckbox = document.createElement("input");
+    inputcheckbox.className = "inputcheck"
+    inputcheckbox.type = "checkbox";
+    inputcheckbox.style.display = "block";
+    inputcheckbox.addEventListener("click", () => {
+      item.completed = !item.completed;
+      if (item.completed) {
+        span.style.textDecoration = "line-through";
+      } else {
+        span.style.textDecoration = "none";
+      }
+      span.style.textDecorationColor = "red"
+    });
+    const span = document.createElement("span");
+    const buttondelete = document.createElement("button");
+    buttondelete.textContent = "Удалить";
+    buttondelete.addEventListener("click", () => {
+      const divname = document.getElementById("divname");
+      divname.style.display = "block";
+    });
+    const buttonda = document.getElementById("buttonda");
+
+    buttonda.addEventListener("click", () => {
+
+      list.remove();
+      inputcheckbox.style.display = "none";
+      divname.style.display = "none"
+    });
+
+
+    const buttonotmen = document.getElementById("buttonotmen");
+    buttonotmen.addEventListener("click", () => {
+      divname.style.display = "none";
+
+    });
+
+    span.textContent = item.title;
+    list.append(span, inputcheckbox, buttondelete);
+    ul.appendChild(list);
+  });
+};
+renderTodos(todos);
