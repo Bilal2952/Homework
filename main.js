@@ -1,64 +1,138 @@
-//! task 1
+const form = document.getElementById("form");
+const todoinput = document.getElementById("input");
+const buttonda = document.getElementById("buttonda");
+const ul = document.getElementById("ulid");
 
- let index = 0;
+let todos = [];
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-//   ! task 2
+  const inputValue = todoinput.value.trim();
 
- let counter = 2;
-
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
-
-//    ! task 3
-
-let count = 10;
-let sum = 1;
-
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
-
-// task 4
-
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
-
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+  if (todoinput.value.trim() === "") {
+    const divclass = document.getElementById("divclass");
+    divclass.style.display = "block";
+    const button2 = document.getElementById("button5");
+    button2.addEventListener("click", () => {
+      divclass.style.display = "none";
+    });
+  } else {
+    const newTodo = {
+      id: Date.now().toString(),
+      title: inputValue,
+      completed: false,
+    };
+    addPost(newTodo);
+    getTodos();
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+  todoinput.value = "";
+});
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
+const renderTodos = (todosArray = []) => {
+  ul.innerHTML = "";
+  todosArray.forEach((item) => {
+    const list = document.createElement("li");
+    const inputcheckbox = document.createElement("input");
+    inputcheckbox.className = "inputcheck";
+    inputcheckbox.type = "checkbox";
+    inputcheckbox.style.display = "block";
+    const span = document.createElement("span");
+    inputcheckbox.checked = item.completed
+    if (item.completed) {
+      span.style.textDecoration = "line-through";
+    } else {
+      span.style.textDecoration = "none";
+    }
+    span.style.textDecorationColor = "red";
+
+    inputcheckbox.addEventListener("click", () => {
+      updateTodo(item.id, item.completed);
+    });
+    const buttondelete = document.createElement("button");
+    buttondelete.textContent = "Удалить";
+
+    buttondelete.addEventListener("click", () => {
+      const divname = document.getElementById("divname");
+      divname.style.display = "block";
+
+      buttonda.addEventListener("click", () => {
+        list.remove();
+        deleteTodo(item.id);
+        inputcheckbox.style.display = "none";
+        divname.style.display = "none";
+      });
+    });
+    const buttonda = document.getElementById("buttonda");
+
+    const buttonotmen = document.getElementById("buttonotmen");
+    buttonotmen.addEventListener("click", () => {
+      divname.style.display = "none";
+	});
+
+    span.textContent = item.title;
+    list.append(span, inputcheckbox, buttondelete);
+    ul.appendChild(list);
+  });
+};
+
+const BASE_URL = "https://3f5b105781d92677.mokky.dev";
+
+const addPost = async (object) => {
+  try {
+    const response = await fetch(`${BASE_URL}/todos`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(object),
+    });
+    const data = await response.json();
+    console.log("WORKING");
+  } catch (error) {
+    console.log(error);
   }
+};
+
+const getTodos = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/todos`);
+    const data = await response.json();
+    renderTodos(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+getTodos();
+
+const deleteTodo = async (id) => {
+  try {
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "DELETE",
+    });
+    getTodos();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateTodo = async (id, completed) => {
+  console.log(id);
+  try {
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        completed: !completed,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    getTodos();
+  } catch (error) {
+    console.log(error);
+  }
+};
