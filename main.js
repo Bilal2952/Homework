@@ -1,64 +1,83 @@
-//! task 1
+//  task -1
+const mainh2 = document.getElementById("main-heading");
+mainh2.style.fontSize = "60px";
+mainh2.style.color = "green";
+mainh2.textContent = "Popular products";
+console.log(mainh2);
+// task -2
+const asidechild = document.getElementsByTagName("aside");
+asidechild[0].remove();
+console.log(asidechild);
+// task-3
 
- let index = 0;
+const section = document.getElementsByClassName("section")[0];
+const h3 = document.getElementsByClassName("heading");
+section.firstElementChild.classList.remove('heading')
+console.log(section);
+// ! задача - 2
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+let zadacha = [
+    {
+      icon: "https://www.pngall.com/wp-content/uploads/5/Instagram-Logo-PNG-Download-Image.png",
+      title: "instagram",
+      description:
+        "Instagram (рус. Инстагра́м[1]) — американская социальная сеть для обмена фотографиями и видео, основанная Кевином Систромом и Майком Кригером. В апреле 2012 года компания Facebook Inc.",
+      link: "https://www.instagram.com/themalikov.01?igsh=amE1bGRlemp6OXo2",
+    },
 
-//   ! task 2
+    {
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/768px-Telegram_logo.svg.png",
+      title: "telegram",
+      description:
+        "Telegram (от др.-греч. τῆλε «далеко» + др.-греч. γράμμα «запись») — кроссплатформенная система мгновенного обмена сообщениями (мессенджер) с функциями обмена текстовыми, голосовыми и видеосообщениями",
+      link: "https://t.me/skillboxru.",
+    },
+  ];
 
- let counter = 2;
+  let taibl = document.getElementById("link");
+  zadacha.map((element) => {
+    const con = document.createElement("li");
+    con.className = "listcls";
 
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
+    const image = document.createElement("img");
+    image.src = element.icon;
+    image.style.width = "130px";
+    image.style.paddingLeft = "135px";
+    image.style.paddingTop = "50px";
 
-//    ! task 3
+    const h1 = document.createElement("h1");
+    h1.textContent = element.title;
+    h1.style.fontSize = "45px";
+    h1.style.paddingLeft = "100px";
+    h1.style.fontFamily = " sans-serif";
 
-let count = 10;
-let sum = 1;
+    const p = document.createElement("p");
+    p.textContent = element.description;
+    p.style.paddingLeft = "20px";
+    p.style.fontSize = "17px";
+    p.style.fontFamily = "sans-serif";
 
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
+    const button = document.createElement("button");
+    // button.textContent = element.link;
+    button.style.fontSize = "25px";
+    button.style.borderRadius = "25px";
+    button.style.marginLeft = "85px";
+    // button.style.backgroundColor = "black";
+    // button.style.color = "white";
+    button.style.border = "none";
+    button.style.cursor = "pointer";
+    button.style.padding = "12px";
+    // button.textContent = "READ  MORE";
+    button.style.width = "225px";
+    button.className = "hover";
 
-// task 4
+    const a = document.createElement("a");
+    a.textContent = "read more";
+    a.addEventListener("click", () => {
+      a.href = element.link;
+    });
+    button.append(a);
 
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
-
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
-  }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
-
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+    con.append(image, h1, p, button);
+    taibl.append(con);
+  });
