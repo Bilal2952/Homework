@@ -1,64 +1,110 @@
-//! task 1
+const getposts = async () => {
+    const respons = await fetch("https://jsonplaceholder.typicode.com/photos");
+    console.log(respons);
 
- let index = 0;
+    const data = await respons.json();
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+    const photosArray = [
+      "https://masterpiecer-images.s3.yandex.net/c8f9ab0a6ab511ee8991baea8797b5f2:upscaled",
+      "https://avatars.mds.yandex.net/get-shedevrum/11478110/img_d6927e00f37a11eea615fa438e8a26f5/orig",
+      "https://masterpiecer-images.s3.yandex.net/41de7592966611eeb6f2f6c574779d3e:upscaled",
+    ];
 
-//   ! task 2
+    const currentData = data.slice(0, 3).map((element, i) => {
+      return {
+        ...element,
+        thumbnailUrl: photosArray[i],
+      };
+    });
 
- let counter = 2;
+    const ul = document.getElementById("ul");
+    currentData.map((v) => {
+      const li = document.createElement("li");
+      li.className = "licll";
+      const p = document.createElement("p");
+      p.className = "ptt";
+      p.textContent = "...";
+      const image = document.createElement("img");
+      image.className = "imagecll";
+      image.src = v.thumbnailUrl;
+      const h2 = document.createElement("h2");
+      h2.className = "h2cll";
+      h2.textContent = v.title;
 
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
+      li.append(image, h2, p);
+      ul.appendChild(li);
+    });
+    console.log(data[0]);
+  };
+  setTimeout(() => {
+    getposts();
+  }, 8000);
 
-//    ! task 3
+  loading();
+  function loading() {
+    let time = 10;
+    const ul = document.getElementById("ul");
 
-let count = 10;
-let sum = 1;
+    const h1 = document.createElement("h1");
+    h1.textContent = "loading...";
 
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
-
-// task 4
-
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
-
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+    ul.appendChild(h1);
+    ul.classList.toggle("loading...");
+    let interval = setInterval(() => {
+      if (time === 0) {
+        clearInterval(interval);
+        ul.textContent = "";
+      }
+      time--;
+    }, 700);
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+  // ! задча - 2
+
+//   const post = async () => {
+//     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//     console.log(res);
+
+//     const datas = await res.json();
+//     const urlkartina = [
+//       "https://images.justwatch.com/poster/207533983/s332/",
+//       "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/cb22693a-d025-4d74-81c5-11976cbf4858/600x900",
+//       "https://kinolira.ru/wp-content/uploads/2023/07/chudo-doktor-personazhi.jpg",
+//       "https://lh4.googleusercontent.com/proxy/j6VcFciC1xGPogQLVCqxpaWOgjBTHWtua_luYieGQAJVwCtU6jsvHSfy_YcngJrjtr1Tn8heHzBowG8nSk2l7nsJpsjhwtJyLyF9e8113K7AQqOoXNRYuWzdbAGggA",
+//     ];
+
+//     const curst = datas.slice(0, 4).map((element, i) => {
+//       return {
+//         ...element,
+//         thum: urlkartina[i],
+//       };
+//     });
+//     const ulclass = document.getElementById("ulclass");
+//     curst.map((v) => {
+//       const liclass = document.createElement("li");
+//       liclass.className = "liclass";
+//       const pteg = document.createElement("p");
+//       pteg.className = "pteg";
+//       pteg.textContent = "...";
+//       const imgclass = document.createElement("img");
+//       imgclass.className = "imgclass";
+//       imgclass.src = v.thum;
+//       const h2class = document.createElement("h2");
+//       h2class.className = "h2class";
+//       h2class.textContent = v.name;
+//       const h3class = document.createElement("h3");
+//       h3class.textContent = v.company["name"];
+//       const pteg2 = document.createElement("p");
+//       pteg2.className = "pteg2";
+//       pteg2.textContent = v.phone;
+//       const h22 = document.createElement("h2");
+//       h22.className = "h2class2";
+//       h22.textContent = v.email;
+//       liclass.append(imgclass, h2class, h3class, pteg2, h22, pteg);
+//       ulclass.appendChild(liclass);
+//     });
+//     console.log(datas[0]);
+//   };
+//   setTimeout(() => {
+//     post();
+//   }, 1000);

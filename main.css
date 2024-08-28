@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.imagecll{
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.h2cll{
+    font-size: 12px;
+    padding-left: 50px;
+    padding-top: 25px;
+}
+#ul{
+    display: flex;
+    gap: 50px;
+    background-color: rgb(159, 156, 156);
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+}
+.licll{
+    width: 300px;
+    height: 400px;
+    background-color: aliceblue;
+ list-style: none;
+ margin-top: 50px;
+}
+.ptt{
+    font-size: 35px;
+    padding-left: 250px;
+    padding-top: 50px;
+}
+#headerclass{
+    height: 80px;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  display: flex;
+  justify-content: space-between;
+}
+h3{
+    font-size: 35px;
+    padding-left: 25px;
+    padding-top: 15px;
+}
+#buttonclass{
+    height: 35px;
+    width: 145px;
+    margin-top: 20px;
+    margin-right: 50px;
+    border: none;
+    background-color: darkorchid;
+    color: aliceblue;
+}
+h1{
+    font-size: 60px;
+    text-align: center;
+    margin: 100px auto;
+}
+
+/* !задача - 2 */
+
+
+.imgclass{
+    width: 180px;
+    height: 180px;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#ulclass{
+    display: flex;
+    gap: 20px;
+    background-color: rgb(206, 200, 200);
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+}
+.liclass{
+    width: 300px;
+    height: 450px;
+ list-style: none;
+ margin-top: 20px;
+ border-radius: 25px;
+ background: linear-gradient(to top, rgb(245, 243, 241) 70%, rgba(236, 127, 221, 0.626) 50%);
+}
+
+h3{
+    font-size: 22px;
+    padding-left: 50px;
+
+}
+.pteg2{
+    font-size: 18px;
+    padding-top: 15px;
+    padding-left: 50px;
+}
+
+.pteg{
+    font-size: 45px;
+    padding-left: 220px;
+
+}
+.h2class{
+font-size: 25px;
+padding-left: 50px;
+}
+
+.h2class2{
+    font-size: 15px;
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+.users{
+    font-size: 40px;
+    background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    border-top: 3px solid;
+}
