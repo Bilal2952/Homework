@@ -1,57 +1,110 @@
-// * task 1
-setTimeout(function () {
-  const hello = document.getElementById("paragraf");
-  hello.innerHTML = "Ураа!";
-},10000);
+const getposts = async () => {
+    const respons = await fetch("https://jsonplaceholder.typicode.com/photos");
+    console.log(respons);
 
-// task 2
-let i = 0;
- function chage() {
-  const doc = document.getElementById("flowers");
-  const color = ["black", "blue", "brown", "green"];
-  doc.style.background = color[i];
-  i = (i +1) % color.length
-}
-setInterval(chage,1000)
+    const data = await respons.json();
 
-// task 3
+    const photosArray = [
+      "https://masterpiecer-images.s3.yandex.net/c8f9ab0a6ab511ee8991baea8797b5f2:upscaled",
+      "https://avatars.mds.yandex.net/get-shedevrum/11478110/img_d6927e00f37a11eea615fa438e8a26f5/orig",
+      "https://masterpiecer-images.s3.yandex.net/41de7592966611eeb6f2f6c574779d3e:upscaled",
+    ];
 
-let timer;
-let minutesInput = document.getElementById("minutes")
-let secondsInput = document.getElementById("seconds")
-let startButton = document.getElementById("start")
-let pauseButton = document.getElementById("pause")
-let resetButton = document.getElementById("reset")
-let timerDisplay= document.getElementById("timer")
+    const currentData = data.slice(0, 3).map((element, i) => {
+      return {
+        ...element,
+        thumbnailUrl: photosArray[i],
+      };
+    });
 
-function startTimer() {
-  let minutes = parseInt(minutesInput.value) || 0;
-  let seconds = parseInt(secondsInput.value) || 0;
-  let totalTime = minutes * 60 + seconds;
-}
+    const ul = document.getElementById("ul");
+    currentData.map((v) => {
+      const li = document.createElement("li");
+      li.className = "licll";
+      const p = document.createElement("p");
+      p.className = "ptt";
+      p.textContent = "...";
+      const image = document.createElement("img");
+      image.className = "imagecll";
+      image.src = v.thumbnailUrl;
+      const h2 = document.createElement("h2");
+      h2.className = "h2cll";
+      h2.textContent = v.title;
 
-timer = setInterval(() => {
-  if(totalTime > 0) {
-    minutes = Math.floor(totalTime / 60)
-    seconds = totalTime % 60;
-    timerDisplay.innerHTML = `${minutes}:${
-      seconds < 10 ? "0" : ""
-    }${seconds}`;
-    totalTime--
-  }else {
-    clearInterval(timer);
-    timerDisplay.innerHTML = "Tome out!";
+      li.append(image, h2, p);
+      ul.appendChild(li);
+    });
+    console.log(data[0]);
+  };
+  setTimeout(() => {
+    getposts();
+  }, 8000);
+
+  loading();
+  function loading() {
+    let time = 10;
+    const ul = document.getElementById("ul");
+
+    const h1 = document.createElement("h1");
+    h1.textContent = "loading...";
+
+    ul.appendChild(h1);
+    ul.classList.toggle("loading...");
+    let interval = setInterval(() => {
+      if (time === 0) {
+        clearInterval(interval);
+        ul.textContent = "";
+      }
+      time--;
+    }, 700);
   }
-}, 1000 );
 
-startButton.addEventListener("click", startTimer);
- pauseButton.addEventListener("click", () => {
-  clearInterval(timer)
- });
+  // ! задча - 2
 
- resetButton.addEventListener("click", () => {
-  clearInterval(timer)
-  timerDisplay.innerHTML = "00:00";
-  minutesInput.value = "";
-  secondsInput.value = "";
- });
+//   const post = async () => {
+//     const res = await fetch("https://jsonplaceholder.typicode.com/users");
+//     console.log(res);
+
+//     const datas = await res.json();
+//     const urlkartina = [
+//       "https://images.justwatch.com/poster/207533983/s332/",
+//       "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/cb22693a-d025-4d74-81c5-11976cbf4858/600x900",
+//       "https://kinolira.ru/wp-content/uploads/2023/07/chudo-doktor-personazhi.jpg",
+//       "https://lh4.googleusercontent.com/proxy/j6VcFciC1xGPogQLVCqxpaWOgjBTHWtua_luYieGQAJVwCtU6jsvHSfy_YcngJrjtr1Tn8heHzBowG8nSk2l7nsJpsjhwtJyLyF9e8113K7AQqOoXNRYuWzdbAGggA",
+//     ];
+
+//     const curst = datas.slice(0, 4).map((element, i) => {
+//       return {
+//         ...element,
+//         thum: urlkartina[i],
+//       };
+//     });
+//     const ulclass = document.getElementById("ulclass");
+//     curst.map((v) => {
+//       const liclass = document.createElement("li");
+//       liclass.className = "liclass";
+//       const pteg = document.createElement("p");
+//       pteg.className = "pteg";
+//       pteg.textContent = "...";
+//       const imgclass = document.createElement("img");
+//       imgclass.className = "imgclass";
+//       imgclass.src = v.thum;
+//       const h2class = document.createElement("h2");
+//       h2class.className = "h2class";
+//       h2class.textContent = v.name;
+//       const h3class = document.createElement("h3");
+//       h3class.textContent = v.company["name"];
+//       const pteg2 = document.createElement("p");
+//       pteg2.className = "pteg2";
+//       pteg2.textContent = v.phone;
+//       const h22 = document.createElement("h2");
+//       h22.className = "h2class2";
+//       h22.textContent = v.email;
+//       liclass.append(imgclass, h2class, h3class, pteg2, h22, pteg);
+//       ulclass.appendChild(liclass);
+//     });
+//     console.log(datas[0]);
+//   };
+//   setTimeout(() => {
+//     post();
+//   }, 1000);
