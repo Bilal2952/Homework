@@ -1,64 +1,75 @@
-//! task 1
+const form = document.getElementById("form");
+const todoinput = document.getElementById("input");
+const buttonda = document.getElementById("buttonda");
+const ul = document.getElementById("ulid");
 
- let index = 0;
+let todos = [];
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
 
- while (index <= 100) {
-   console.log(index);
-   index++;
- }
+  const inputValue = todoinput.value.trim();
 
-//   ! task 2
-
- let counter = 2;
-
- while (counter <= 100) {
-   if (counter % 2 === 0) {
-     console.log(counter);
-   }
-   counter++;
- }
-
-//    ! task 3
-
-let count = 10;
-let sum = 1;
-
-while (count <= 0) {
-  sum = sum + count
-  count++
-}
-console.log(sum +count);
-
-// task 4
-
-let userName = "Naruto Shipuden  ";
-console.log(userName.charAt(0));
-let jamNumber = 0;
-while (jamNumber <= userName.length) {
-  if (userName.charAt(jamNumber) ==="u") {
-    console.log("the leter is in "+jamNumber+"index");
-  }  
-  jamNumber++
-}
-let Number = prompt("введите код");
-for (let kod = 0; kod < Number; kod++) {
-  console.log(kod);
-}
-
-let line = 7;
-let line2 = "";
-let line3 = "*";
-for (let ts = 0; ts < line; ts++) {
-  line2 += line3;
-  console.log(line2);
+  if (todoinput.value.trim() === "") {
+    const divclass = document.getElementById("divclass");
+    divclass.style.display = "block";
+    const button2 = document.getElementById("button5");
+    button2.addEventListener("click", () => {
+      divclass.style.display = "none";
+    });
+  } else {
+    const newTodo = {
+      id: Date.now().toString(),
+      title: inputValue,
+      completed: false,
+    };
+    todos.push(newTodo);
+    renderTodos(todos);
   }
-  let wl = "7";
-  let res1 = "";
-  let res2 = "#";
-  let res3 = "0";
+  todoinput.value = "";
+});
+const renderTodos = (todosArray = []) => {
+  ul.innerHTML = "";
+  todosArray.forEach((item) => {
+    const list = document.createElement("li");
+    const inputcheckbox = document.createElement("input");
+    inputcheckbox.className = "inputcheck"
+    inputcheckbox.type = "checkbox";
+    inputcheckbox.style.display = "block";
+    inputcheckbox.addEventListener("click", () => {
+      item.completed = !item.completed;
+      if (item.completed) {
+        span.style.textDecoration = "line-through";
+      } else {
+        span.style.textDecoration = "none";
+      }
+      span.style.textDecorationColor = "red"
+    });
+    const span = document.createElement("span");
+    const buttondelete = document.createElement("button");
+    buttondelete.textContent = "Удалить";
+    buttondelete.addEventListener("click", () => {
+      const divname = document.getElementById("divname");
+      divname.style.display = "block";
+    });
+    const buttonda = document.getElementById("buttonda");
 
-  while (wl >= res3) {
-    res1 += res2;
-    console.log(res1);
-    res3++
-  }
+    buttonda.addEventListener("click", () => {
+
+      list.remove();
+      inputcheckbox.style.display = "none";
+      divname.style.display = "none"
+    });
+
+
+    const buttonotmen = document.getElementById("buttonotmen");
+    buttonotmen.addEventListener("click", () => {
+      divname.style.display = "none";
+
+    });
+
+    span.textContent = item.title;
+    list.append(span, inputcheckbox, buttondelete);
+    ul.appendChild(list);
+  });
+};
+renderTodos(todos);
